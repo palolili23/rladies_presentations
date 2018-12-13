@@ -1,0 +1,222 @@
+---
+title: "Table One"
+subtitle: "...the easiest way"
+author: Paloma Rojas S.
+output:
+  xaringan::moon_reader:
+    css: ["default", "rladies", "rladies-fonts"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+# What do we use **Table 1** for?
+
+.center[![Table 1](C:/Users/PaloRS/Dropbox/github/Slides/nejmoa.jpg)]
+
+---
+
+# Disclaimers
+
+##Before building your Table 1. be sure you know your data
+
+- You already cleaned and prepared your data
+
+- You know which variables are categorical, binary, continuous, discrete and..
+
+- You know how you want to present them according to their properties (ex. mean vs. median)
+
+---
+background-image: url("https://media.giphy.com/media/UqjSzv18agbgk/giphy.gif")
+background-position: 50% 50%
+
+# Let's get started!
+
+---
+# Get **tableone**
+
+Install and open the **tableone** package 
+
+```{r eval=FALSE, tidy=FALSE}
+install.packages(tableone)
+
+```
+
+``` {r }
+library(tableone)
+```
+
+---
+# Open the example dataset
+```{r }
+library(dplyr)
+db <- starwars
+```
+
+---
+```{r}
+db
+
+```
+---
+
+```{r}
+glimpse(db)
+
+db <- db %>% 
+  select(-name)
+```
+---
+#First case
+
+You have a dataframe with all the variables to include in your Table1, and they are ready to be summarized (not this case).
+
+```{r }
+CreateTableOne(data = db)
+```
+
+---
+
+#Second case
+You want only some variables from your dataframe in your table 1
+
+- Save your variable names in a vector
+
+- Define which variables should be presented as categorical.
+  Since they should be factors, the `CreateTableOne` function includes an option `factorVars`.
+
+```{r}
+db <- db %>% 
+  mutate(human = case_when(
+    species == "Human" ~ "Human",
+    TRUE ~ "Other"))
+
+myVars<- c("height", "mass", "birth_year", "gender", "human")
+
+catVars <- c("gender", "human")
+```
+
+---
+#Second case
+
+```{r }
+table2 <-CreateTableOne(vars = myVars, data = db, factorVars = catVars)
+table2
+```
+
+---
+#Options
+- In case you want all levels for your categorical variables, use the option `showAllLevels`
+
+- If you have skewed numerical variables, and want to present as median and IQR, use option `nonnormal`.To do this this save the names of the variables as a vector.
+
+```{r}
+skewed <- c("mass", "birth_year")
+
+print(table2, showAllLevels = TRUE, nonnormal = skewed, explain = FALSE)
+```
+- If you don't want the description (mean, sd, %), set `explain = FALSE`
+
+For more options to print, `?print.TableOne`
+
+---
+#Third case, by groups
+- We want to see columns for each treatment. Use option `strata`
+
+- By default, the table will include p-values that compare the characteristics between groups.
+
+- It will use chi2 for categorical variables, tttest/Anova for numerical variables.
+
+```{r }
+table3 <-CreateTableOne(vars = myVars, strata = "human", 
+                        data = db, factorVars = catVars)
+```
+---
+```{r}
+table3
+```
+---
+- If you set variables as nonnormal, it will use Wilcoxon or Kruskal Wallis (in print fx)
+- For categorical variables with small cell counts, use the option exact (in print fx)
+```{r}
+print(table3, nonnormal = skewed, exact = "gender", explain = FALSE)
+```
+
+---
+#Cool extra to check missing data
+```{r}
+summary(table2)
+```
+---
+#Exporting
+If your table is going to word file, you can export int a .csv and make it pretty your way.
+
+- Save your `print` code adding a few extra statements:
+```{r}
+table3_exp<- print(table3, nonnormal = skewed, 
+                   exact = "gender", explain = TRUE, 
+                   test = TRUE, quote = FALSE, noSpaces = TRUE, 
+                   printToggle = FALSE)
+```
+
+- Export as a CSV file
+
+```{r eval=FALSE, tidy=FALSE}
+write.csv(table3_exp, file = "Table3.csv")
+```
+
+---
+# Ready to be tunned
+
+.center[![Table 3](C:/Users/PaloRS/Dropbox/github/Slides/csv.png)]
+
+---
+#If you are use RMarkdown
+```{r eval=FALSE, tidy=FALSE}
+install.packages(kableExtra)
+```
+
+```{r}
+library(kableExtra)
+```
+
+---
+#Use **kableExtra** and have fun!!
+```{r}
+library(kableExtra)
+kable(table3_exp) %>%
+  kable_styling(bootstrap_options = c("hover", "condensed", "responsive"),
+                full_width = F, font_size = 16)
+```
+---
+#More on style!
+```{r}
+table_kable<- kable(table3_exp) %>%
+  kable_styling(bootstrap_options = c("hover", "condensed", "responsive"),
+                full_width = F, font_size = 16) %>% 
+  row_spec(0, bold = T, color = " white", background = "#562457") %>% 
+  column_spec(1, bold = T, color = " white", 
+              border_right = T, background = "#88398A") %>%
+  add_header_above(c("Star Wars character's description" = 5)) %>% 
+  footnote(general = "Data from dplyr package",
+           symbol = "nonnorm refers to Mann Whitney test",
+           alphabet = "exact refers to Fisher exact test")
+```
+---
+```{r}
+table_kable
+```
+---
+#All info is available at:
+Table one package description:
+https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html
+
+KableExtra features:
+https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html
+
+Slides created via the R package:
+https://github.com/yihui/xaringan
+---
+background-image: url("https://media.giphy.com/media/5ArJanyCfxgiY/giphy.gif")
+background-position: 50% 50%
