@@ -1,3 +1,8 @@
 # tableone_rladiesmeetup
-Slides on tableone package + kableExtra feats.
-Table 1 presentation
+Presentations for rladies meetups
+
+1. Lightning talk: Slides for package "tableone".
+
+2. Intro to dplyr
+
+3. Tidyverse special edition. Workshop.
