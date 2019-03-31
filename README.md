@@ -1,5 +1,4 @@
-# tableone_rladiesmeetup
-Presentations for rladies meetups
+# Presentations for Rladies meetups
 
 1. Lightning talk: Slides for package "tableone".
 
