@@ -4,4 +4,4 @@
 
 2. Intro to dplyr
 
-3. Tidyverse special edition. Workshop.
+3. Tidyverse special edition. Workshop. Presentations link: https://rladiesrdm-tidyverse.netlify.com
