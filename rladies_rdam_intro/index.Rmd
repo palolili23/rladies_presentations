@@ -1,0 +1,181 @@
+---
+title: "Welcome!"
+subtitle: "A brief introduction"
+author: "rladies_global %>% filter(city == `Rotterdam`)"
+date: "`r format(Sys.Date(), format='%d/%m/%Y')`"
+output:
+  xaringan::moon_reader:
+    css: ["default", "rladies", "rladies-fonts"]
+    lib_dir: libs
+    yolo: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+
+---
+class: inverted
+
+# The mission
+
+**Worldwide** organization
+<br>
+<br>
+… that promotes **gender diversity** in the R- community
+<br>
+<br>
+… via meetups and mentorship
+<br>
+<br>
+… in a **friendly** and **safe environment**
+
+---
+class: center
+
+# Ok if we take pictures?
+
+<img src="camara.png" width="400">
+
+# Otherwise, let us know!
+
+---
+
+# R-Ladies around the world
+
+<img src="rladies_map.png" width="800">
+---
+
+# R-Ladies Rotterdam
+
+We are doing 2 types of activities:
+
+.pull-left[
+
+### Workshops:
+
+![](https://media.giphy.com/media/xThtajIXd9PxmJFxAY/giphy.gif)
+
+Find materials of previous meetups in our [github repo](https://github.com/rladies/meetup-presentations_rotterdam)
+]
+
+--
+
+.pull-right[
+### Social events/drinks
+
+![](https://media.giphy.com/media/E3L5goMMSoAAo/giphy.gif)
+]
+
+---
+
+# R-Ladies Rotterdam
+
+We are 3 organizers:
+
+<img src="Yalda.jfif" width="250">
+<img src="Paloma.jfif" width="220">
+<img src="Elena.jfif" width="200">
+
+---
+
+# Online community
+
+.pull-left[
+
+<img src="slack.png" width="100">
+
+- RLadies Netherlands (by email)
+
+- [RLadies Community (Global)](https://rladies-community-slack.herokuapp.com/)
+]
+
+.pull-right[
+
+<img src="twitter.png" width="100">
+
+- @RLadiesRdam
+
+- @WeAreRladies
+
+- @RLadiesGlobal
+
+]
+
+---
+# Code of conduct
+
+<img src="like.png" width="50">
+** Everyone** participating must agree on the code of conduct.
+
+<br>
+<br>
+
+_**Excerpt:** R-Ladies is dedicated to providing a harassment-free experience for everyone. We do not tolerate harassment of participants in any form._
+
+<br>
+<br>
+<img src="book.png" width="50"> Read the full version here: https://rladies.org/code-of-conduct
+
+<br> This ensures that the environment of meetups stays **safe** and **friendly**!
+---
+
+# Get Involved
+
+Our community is based on volunteer work. 
+
+<br>
+
+In order to keep on going, we need more hands so **join the organizing team :)**
+
+--
+.pull-left[
+### Speakers
+
+- 5 min lightning talk
+- 30 min - 60 min talks
+- Workshop
+
+_Accessible way to practice communication/presentation skills_
+
+]
+--
+
+.pull-right[
+### Sponsors
+
+Tell your company to sponsor us!
+- Location
+- food/drinks/icecream
+
+]
+--
+
+.pull-left[
+### ping rotterdam@rladies.org
+]
+---
+
+# Other announcements
+
+- Welcome *R-Ladies Den Bosch*
+
+--
+
+- Fill our [survey](https://docs.google.com/forms/d/e/1FAIpQLSdQ9X6Z1rJQEotasqUMnegiEQB-TTbkmQq7xflsFFNbjCQMRQ/viewform) (~2min)! 
+This will help us have a better insight of our community and their interests and help us plan future events.
+
+
+
+---
+class: center, inverse
+background-image: url("erum.jpeg")
+background-size: cover
+---
+
+class: center, middle
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
